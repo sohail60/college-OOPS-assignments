@@ -1,58 +1,60 @@
+// C++ program to add two distances using binary plus (+)
+// operator overloading
+
 #include <iostream>
 using namespace std;
 
-class Distance
-{
+class Distance {
+private:
+    int feet, inches;
+
 public:
-    // Member Object
-    int feet, inch;
-    // No Parameter Constructor
-    Distance()
+    // function to read distance
+    void readDistance(void)
     {
-        this->feet = 0;
-        this->inch = 0;
+        cout << "Enter feet: ";
+        cin >> feet;
+        cout << "Enter inches: ";
+        cin >> inches;
     }
 
-    // Constructor to initialize the object's value
-    // Parameterized Constructor
-    Distance(int f, int i)
+    // function to display distance
+    void dispDistance(void)
     {
-        this->feet = f;
-        this->inch = i;
+        cout << "Feet:" << feet << "\t"
+             << "Inches:" << inches << endl;
     }
 
-    // Overloading (+) operator to perform addition of
-    // two distance object
-    Distance operator+(Distance &d2) // Call by reference
+    // add two Distance using + operator overloading
+    Distance operator+(Distance& dist1)
     {
-        // Create an object to return
-        Distance d3;
-
-        // Perform addition of feet and inches
-        d3.feet = this->feet + d2.feet;
-        d3.inch = this->inch + d2.inch;
-
-        // Return the resulting object
-        return d3;
+        Distance tempD; // to add two distances
+        tempD.inches = inches + dist1.inches;
+        tempD.feet = feet + dist1.feet + (tempD.inches / 12);
+        tempD.inches = tempD.inches % 12;
+        return tempD;
     }
 };
 
-// Driver Code
 int main()
 {
-    // Declaring and Initializing first object
-    Distance d1(8, 9);
+    Distance D1, D2, D3;
 
-    // Declaring and Initializing second object
-    Distance d2(10, 2);
+    cout << "Enter first  distance:" << endl;
+    D1.readDistance();
+    cout << endl;
 
-    // Declaring third object
-    Distance d3;
+    cout << "Enter second distance:" << endl;
+    D2.readDistance();
+    cout << endl;
 
-    // Use overloaded operator
-    d3 = d1 + d2;
+    // add two distances
+    D3 = D1 + D2;
 
-    // Display the result
-    cout << "Total Feet & Inches: " << d3.feet << "'" << d3.inch;
+    cout << "Total Distance:" << endl;
+    D3.dispDistance();
+
+    cout << endl;
+
     return 0;
 }

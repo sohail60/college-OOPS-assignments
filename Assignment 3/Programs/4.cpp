@@ -3,11 +3,11 @@ using namespace std;
 
 int main(){
     double p,r,t;
-    cout << "Enter Pricipal: "<< endl;
+    cout << "Enter Pricipal in Rupees: "<< endl;
     cin >> p;
     cout << "Enter Rate: "<< endl;
     cin >> r;
-    cout << "Enter Time: "<< endl;
+    cout << "Enter Time in Years: "<< endl;
     cin >> t;
     
     double inst=p*r*t/100;

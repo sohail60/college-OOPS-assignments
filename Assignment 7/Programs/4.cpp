@@ -1,82 +1,38 @@
-#include<iostream>
+#include <iostream> 
 using namespace std;
 
-class Dog{
-    private:
-    string color;
-
+class A //single base class
+{
     public:
-    Dog(){
-        this->color="";
-    }
-
-    Dog(string s){
-        this->color=s;
-    }
-
-    void setColor(string s){
-        this->color=s;
-    }
-
-    string getColor(){
-        return this->color;
-    }
+ 	int x, y;
+ 	void getdata()
+ 	{
+   	    cout << "\nEnter value of x and y:\n"; cin >> x >> y;
+ 	}
 };
-
-class Labrador:public Dog{
-    private:
-    int age;
-
+class B : public A //B is derived from class base
+{
     public:
-    Labrador(){
-        this->age=0;
-    }
-
-    Labrador(int a){
-        this->age=a;
-    }
-
-    void setAge(int a){
-        this->age=a;
-    }
-
-    int getAge(){
-        return this->age;
-    }
+ 	void product()
+ 	{
+ 	    cout << "\nProduct= " << x * y;
+ 	}
 };
-
-class Bulldog:public Dog{
-    private:
-    int age;
-
+class C : public A //C is also derived from class base
+{
     public:
-    Bulldog(){
-        this->age=0;
-    }
-
-    Bulldog(int a){
-        this->age=a;
-    }
-
-    void setAge(int a){
-        this->age=a;
-    }
-
-    int getAge(){
-        return this->age;
-    }
+ 	void sum()
+ 	{
+        cout << "\nSum= " << x + y;
+ 	}
 };
-
-int main(){
-
-    Labrador *obj1=new Labrador(4);
-    obj1->setColor("Gray");
-    Bulldog *obj2=new Bulldog(5);
-    obj2->setColor("Brown");
-
-    cout<<obj1->getColor()<<endl;
-    cout<<obj1->getAge()<<endl;
-    cout<<obj2->getColor()<<endl;
-    cout<<obj2->getAge()<<endl;
+int main()
+{
+    B obj1;          //object of derived class B
+    C obj2;          //object of derived class C
+    obj1.getdata();
+    obj1.product();
+    obj2.getdata();
+    obj2.sum();
     return 0;
 }

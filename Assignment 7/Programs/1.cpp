@@ -1,70 +1,34 @@
-#include<iostream>
-using namespace std;
-
-class Car{
-    private:
-    int milage;
-    int seat;
-
-    public:
-    Car(){
-        milage=0;
-        seat=0;
-    }
-
-    Car(int m,int s){
-        this->milage=m;
-        this->seat=s;
-    }
-
-    void setMilage(int m){
-        this->milage=m;
-    }
-
-    void setSeat(int s){
-        this->seat=s;
-    }
-
-    int getMilage(){
-        return this->milage;
-    }
-
-    int getSeat(){
-        return this->seat;
-    }
-};
-
-class Hyundai: public Car{
-    private:
-    int price;
-
-    public:
-    Hyundai(){
-        price=0;
-    }
-
-    Hyundai(int p){
-        this->price=p;
-    }
-
-    void setPrice(int p){
-        this->price=p;
-    }
-
-    int getPrice(){
-        return this->price;
-    }
-
-};
-
-
-int main(){
-
-    Hyundai *obj=new Hyundai(50);
-    obj->setMilage(25);
-
-    cout<<obj->getPrice()<<endl;
-    cout<<obj->getMilage()<<endl;
-
+#include <iostream> 
+using namespace std; 
+class base    //single base class
+{
+   public:
+     int x;
+   void getdata()
+   {
+     cout << "Enter the value of x = "; cin >> x;
+   }
+ };
+class derive : public base    //single derived class
+{
+   private:
+    int y;
+   public:
+   void readdata()
+   {
+     cout << "Enter the value of y = "; cin >> y;
+   }
+   void product()
+   {
+     cout << "Product = " << x * y;
+   }
+ };
+ 
+ int main()
+ {
+    derive a;     //object of derived class
+    a.getdata();
+    a.readdata();
+    a.product();
     return 0;
-}
+ } 

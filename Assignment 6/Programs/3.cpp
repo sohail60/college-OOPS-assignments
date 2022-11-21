@@ -1,33 +1,125 @@
-#include<iostream>
+// C++ program to demonstrate the working of public inheritance
+
+#include <iostream>
 using namespace std;
 
-class Human{
-    public:
-    int height;
+class Base {
+  private:
+    int pvt = 1;
 
-    protected:
-    int age;
+  protected:
+    int prot = 2;
 
-    private:
-    int weight;
-};
+  public:
+    int pub = 3;
 
-class Male1: public Human{
-
-};
-
-class Male2: protected Human{
-
-    public:
-        int getAge(){
-        age;
+    // function to access private member
+    int getPVT() {
+      return pvt;
     }
 };
 
-int main(){
-    Male1 m1;
-    Male2 m2;
+class PublicDerived : public Base {
+  public:
+    // function to access protected member from Base
+    int getProt() {
+      return prot;
+    }
+};
 
-    cout<< m1.height <<endl;
-    cout<< m2.getAge() <<endl;
+int main() {
+  PublicDerived object1;
+  cout << "Private = " << object1.getPVT() << endl;
+  cout << "Protected = " << object1.getProt() << endl;
+  cout << "Public = " << object1.pub << endl;
+  return 0;
+}
+
+
+
+// C++ program to demonstrate the working of protected inheritance
+
+#include <iostream>
+using namespace std;
+
+class Base {
+  private:
+    int pvt = 1;
+
+  protected:
+    int prot = 2;
+
+   public:
+    int pub = 3;
+
+    // function to access private member
+    int getPVT() {
+      return pvt;
+    }
+};
+
+class ProtectedDerived : protected Base {
+  public:
+    // function to access protected member from Base
+    int getProt() {
+      return prot;
+    }
+
+    // function to access public member from Base
+    int getPub() {
+      return pub;
+    }
+};
+
+int main() {
+  ProtectedDerived object1;
+  cout << "Private cannot be accessed." << endl;
+  cout << "Protected = " << object1.getProt() << endl;
+  cout << "Public = " << object1.getPub() << endl;
+  return 0;
+}
+
+
+
+
+// C++ program to demonstrate the working of private inheritance
+
+#include <iostream>
+using namespace std;
+
+class Base {
+  private:
+    int pvt = 1;
+
+  protected:
+    int prot = 2;
+
+  public:
+    int pub = 3;
+
+    // function to access private member
+    int getPVT() {
+      return pvt;
+    }
+};
+
+class PrivateDerived : private Base {
+  public:
+    // function to access protected member from Base
+    int getProt() {
+      return prot;
+    }
+
+    // function to access private member
+    int getPub() {
+      return pub;
+    }
+};
+
+int main() {
+  PrivateDerived object1;
+  cout << "Private cannot be accessed." << endl;
+  cout << "Protected = " << object1.getProt() << endl;
+  cout << "Public = " << object1.getPub() << endl;
+  return 0;
 }

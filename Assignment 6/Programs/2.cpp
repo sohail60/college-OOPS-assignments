@@ -1,31 +1,89 @@
-#include<iostream>
+#include <iostream> 
 using namespace std;
+const int LEN = 80;
 
-class Human{
-    public:
-    int height;
+class doctor{ 
+      private: 
+        char name[LEN]; 
+        char degree[LEN];
 
-    private:
-    int weight;
-
-    protected:
-    int age;
+      public: 
+        void getedu(){ 
+            cout<<"Enter the Doctor Name : "; 
+            cin>> name; 
+            cout<<"Enter Doctorate Degree : "; 
+            cin>>degree; 
+            } 
+        void showedu(){ 
+            cout<<"\nDoctor Name : "<<name; 
+            cout<<"\nDoctorate Degree : "<<degree; 
+            }
 };
 
-class Male: protected Human{
-    
-    public:
-    int dob;
+class patient{ 
+      private: 
+        char name[LEN]; 
+        char number [LEN];
 
-    int getHeight(){
-        height;
-    }
+      public: 
+        void getdata(){ 
+            cout<<"\nEnter Patient Name : "; 
+            cin>>name; 
+            cout<<"\nEnter Bed Number : "; 
+            cin>>number; 
+        } 
 
+        void showdata(){ 
+            cout<<"\nPatient Name : "<<name; 
+            cout<<"\nBed Number : "<<number; 
+        } 
+}; 
 
+class department{ 
+       private: 
+            char ward [LEN];
+
+       public: 
+        void getdata(){ 
+            cout<<"\nEnter Ward Name : "; 
+            cin>>ward; 
+        }
+
+        void showdata(){ 
+            cout<<"\nWard Name : "<<ward; 
+        } 
 };
 
-int main(){
-    Male m1;
+class amount{ 
+        private: 
+                int dues; 
+                patient pat; 
+                doctor doc; 
+                department dept;
 
-    cout<< m1.getHeight() <<endl;
-}
+        public: 
+            void getdata(){ 
+                pat.getdata(); 
+                dept.getdata(); 
+                doc.getedu(); 
+                cout<<"Enter Dues of Patient : "; 
+                cin>>dues; 
+        }
+
+                void showdata(){ 
+                pat.showdata(); 
+                dept.showdata(); 
+                doc.showedu(); 
+                cout<<"\nTotal Dues of Patient : "<<dues; 
+        } 
+};
+
+   int main(){ 
+        amount a1; 
+                 
+        cout<<"\nEnter Data "; 
+        a1.getdata(); 
+        cout<<"\nInserted Data is : \n"; 
+        a1.showdata(); 
+        return 0; 
+        }
